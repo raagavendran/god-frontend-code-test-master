@@ -6,10 +6,10 @@ import { useRouter } from "next/router";
 const CarCard = ({ id, modelName, modelType, bodyType, imageUrl }) => {
   const router = useRouter();
 
+  // function to handle shop and learn routes
   const handleShopClick = () => {
     router.push(`/shop/${id}`);
   };
-
   const handleLearnClick = () => {
     router.push(`/learn/${id}`);
   };
@@ -43,6 +43,7 @@ const CarCard = ({ id, modelName, modelType, bodyType, imageUrl }) => {
           justifyContent: "center",
         }}
       >
+        {/* Link to Shop and Learn routes, Link component from vcc-ui */}
         <Link onClick={handleLearnClick}  arrow="right">
           LEARN
         </Link>

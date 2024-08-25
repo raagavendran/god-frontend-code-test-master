@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import data from "../../../../public/api/cars.json";
+import data from "../../../../public/api/cars.json"; // import cars data from cars.json
 import CarCard from "../carCard/CarCard";
-import Carousel from "react-multi-carousel";
+import Carousel from "react-multi-carousel"; // carousel library import
 import "react-multi-carousel/lib/styles.css";
 
 import { TabNav, TabNavItem } from "vcc-ui";
@@ -13,8 +13,10 @@ const CarList = () => {
 
   useEffect(() => {
     setCarsList([...data]);
-  }, []);
+  }, []); 
 
+
+  // carousel settings took from https://www.npmjs.com/package/react-multi-carousel
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -38,6 +40,7 @@ const CarList = () => {
     },
   };
 
+  // filter cars by body type
   useEffect(() => {
     if (active === "All") {
       setFilteredCars([...data]);
@@ -49,6 +52,7 @@ const CarList = () => {
   return (
     <>
       <TabNav enableLineTransition>
+        {/* TabNavItem to show all cars */}
         <TabNavItem
           isActive={active === "All"}
           onClick={() => {
@@ -58,6 +62,7 @@ const CarList = () => {
           All
         </TabNavItem>
 
+        {/* TabNavItem to generate cars by body type */}
         {carsList
           .map((car) => car.bodyType)
           .filter((value, index, self) => self.indexOf(value) === index)
@@ -74,6 +79,7 @@ const CarList = () => {
           ))}
       </TabNav>
 
+      {/* Carousel */}
       <Carousel
         responsive={responsive}
         arrows={true}
@@ -83,6 +89,7 @@ const CarList = () => {
         draggable={true}
         showDots={true}
       >
+        {/* render cars by body type */}
         {filteredCars.map((car) => (
           <div key={car.id}>
             <CarCard

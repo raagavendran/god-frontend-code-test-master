@@ -6,6 +6,7 @@ import "../public/css/styles.css";
 function VolvoApp({ Component, pageProps }: AppProps) {
   return (
     <React.StrictMode>
+      {/* vcc-ui theme provider added */}
       <StyleProvider>
         <ThemePicker variant="light">
           <Component {...pageProps} />
