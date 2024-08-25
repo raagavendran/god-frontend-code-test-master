@@ -1,15 +1,14 @@
 import { useRouter } from "next/router";
-
+import Header from "../../src/components/generic/header/Header";
 const Shop = () => {
   const router = useRouter();
+  //get id from url
   const { id } = router.query;
-  console.log(id);
-  
 
   return (
     <div>
+      <Header />
       <h1>Shop Page for Car ID: {id}</h1>
-      {/* Fetch and display car details using the ID */}
     </div>
   );
 };
